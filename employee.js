@@ -1,9 +1,6 @@
-var mysql = require('mysql');
-var icon = require("asciiart-logo");
-var inquirer = require('promise-mysql');
+var mysql = require('mysql12');
 
 var chalk = require("chalk");
-
 function log (msg){
     console.log(msg);
 }
@@ -17,11 +14,11 @@ log(chalk.yellow(""));
 log(chalk.green.bold("=========================="));
 
 const connectionProperties = {
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "password",
-    database: "employysDB"
-}
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_SCHEMA,
+};
 
 const connection = mysql.createConnection(connectionProperties);
